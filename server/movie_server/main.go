@@ -15,6 +15,8 @@ func main() {
 		c.String(200, "Hello Movie Server")
 	})
 
+	router.GET("/movies",controller.GetMovies())
+
 	if err := router.Run(":8080"); err != nil {
 		fmt.Println("Error starting server:", err)
 		return
