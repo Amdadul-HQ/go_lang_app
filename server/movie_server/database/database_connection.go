@@ -28,3 +28,25 @@ func DBInstance() *mongo.Client {
 	}
 	return client
 }
+
+var Client *mongo.Client = DBInstance()
+
+func OpenCollection(collectionName string) *mongo.Collection {
+	err := godotenv.Load(".env")
+	if err != nil {
+		log.Println("Warning: Unable to load .env file")
+	}
+	database := os.Getenv("DATABASE_NAME")
+
+	fmt.Println("Database:", database)
+
+	collection := Client.Database(database).Collection(collectionName)
+
+	if collection == nil {
+		log.Fatal("Error: Collection is nil")
+	}
+
+	fmt.Println("Collection:", collection)
+
+	return collection
+}
