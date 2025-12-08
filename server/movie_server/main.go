@@ -2,8 +2,8 @@ package main
 
 import (
 	"fmt"
-
 	"github.com/gin-gonic/gin"
+	controller "github.com/Amdadul-HQ/go_lang_app.git/go_app/server/movie_server/controllers"
 )
 
 func main() {
